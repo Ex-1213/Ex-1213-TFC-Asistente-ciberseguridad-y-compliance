@@ -12,6 +12,7 @@ Este proyecto implementa un asistente de consulta normativa mediante n8n, utiliz
 - OpenAI Chat Model: modelo de lenguaje utilizado para procesar la información y generar respuestas.
 - Chat Interface: punto de entrada para las consultas de los usuarios.
 
+```text
   Usuario
    │
    ▼
@@ -32,6 +33,7 @@ Workflow de consulta
          │
          ▼
  Respuesta al usuario
+```
 
 # Diagrama de flujo
 
