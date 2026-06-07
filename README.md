@@ -69,6 +69,42 @@ flowchart LR
     F --> H
 ```
 
+## DESCRIPCIÓN DEL FLUJO
+
+- **When chat message received**
+  
+Actúa como disparador.
+Se ejecuta cuando un usuario envía una pregunta en el chat integrado de n8n.
+
+- **Switch**
+  
+Evalúa el contenido de la consulta.
+Según determinadas reglas o palabras clave, dirige el flujo hacia el documento normativo correspondiente.
+Por ejemplo:
+Si la consulta menciona RGPD → descarga el PDF RGPD.
+Si menciona ENS → descarga el PDF ENS.
+
+- **Google Drive – Download File**
+  
+Cada rama descarga un documento específico almacenado en Google Drive.
+Como muestra en la imágen se descargar los documentos de normativas de GRPD, ENS, ISO-27001.
+
+- **Extract from File**
+  
+Recibe el PDF descargado. → Extrae el texto completo del documento. → Convierte el contenido PDF en texto utilizable por el modelo de lenguaje.
+
+- **Basic LLM Chain**
+  
+Construye el prompt para el modelo.
+Combina: La pregunta del usuario. + El contenido extraído del PDF.
+Envía ambos elementos al modelo de OpenAI.
+
+- **OpenAI Chat Model**
+  
+Nodo conectado como proveedor de modelo para la cadena LLM.
+Genera la respuesta basándose en el documento seleccionado.
+
+
 ## PROMPT DEL LLM
 
 Prompt de los parametros iniciales del LLM:
